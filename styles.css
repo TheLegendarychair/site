@@ -7,7 +7,7 @@ body {
 }
 
 p{
-    padding-bottom: 4%;
+    padding-bottom: 1%;
 }
 h1{
     border: 2px solid #333333; /* width | style | color */
@@ -16,6 +16,7 @@ h1{
 }
 
 #advice{
+    display: inline-block;
     border: 2px solid #333333; /* width | style | color */
     border-radius: 6px;
     padding: 12px 24px;
