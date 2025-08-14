@@ -2,7 +2,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     text-align: center;
-    padding: 10%;
+
+
 }
 
 
@@ -23,6 +24,10 @@ button:hover {
     margin-top: 20px;
     font-size: 18px;
     color: #333;
+    border: 2px solid #333333; /* width | style | color */
+    border-radius: 6px;
+    padding: 12px 24px;
+
 }
 
 button:active{
