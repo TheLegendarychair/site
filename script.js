@@ -4,7 +4,7 @@ const getAdviceBtn = document.getElementById('getAdvice')
 
 async function fetchAdvice(){
     try{
-        adviceDiv.textContent = "Loading..";
+        adviceDiv.textContent = "Loading...";
         const response = await fetch('https://api.adviceslip.com/advice');
         const data = await response.json();
         adviceDiv.textContent = `"${data.slip.advice}"`;
