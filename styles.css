@@ -15,6 +15,11 @@ h1{
     padding: 12px 24px;
 }
 
+h2{
+    margin-top: 40px ;
+    margin-bottom: 0;
+}
+
 #advice{
     display: inline-block;
     border: 2px solid #333333; /* width | style | color */
@@ -43,6 +48,43 @@ button:disabled:hover,
 button:disabled:active {
     background-color: #d093ff;
 }
+
+
+form input,
+form textarea,
+form button {
+    display: block;
+
+}
+
+.commentForm{
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+#commentForm input,
+#commentForm button {
+    display: block;
+    width: 25%;
+    margin: 2% auto;  /* 2% for the vertical */
+    text-align: center;
+}
+#commentForm textarea {
+    display: block;
+    width: 60%;
+    height: 100px;
+    margin: 2% auto;  /* 2% for the vertical */
+    text-align: center;
+}
+
+.commentDiv{
+    text-align: center;
+    margin: auto;
+    width: 60%;
+    padding: 0 20px 20px;
+}
+
+
 
 #adviceDisplay {
     margin-top: 20px;

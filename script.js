@@ -34,4 +34,46 @@ async function fetchAdvice(){
     getAdviceBtn.disabled = false;
 }
 
+
+
+
+async function  handleCommentSubmit(e){
+    //e = event
+
+    e.preventDefault();
+
+    const userSignature = document.getElementById("userSignature").value;
+    const text = document.getElementById("text").value
+
+
+    const comment = {
+        userSignature: userSignature,
+        text: text
+
+    };
+    try{
+        const response = await fetch("http://localhost:8080/api/comments",{
+            method:"POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(comment)
+        });
+        if(response.ok){
+            const savedComment = await response.json();
+
+            alert("Success! Comment submitted :) ");
+            console.log("Saved: ",savedComment);
+            document.getElementById("commentForm").reset();
+
+        } else {
+            alert("Error occurred during submission :(");
+        }}
+        catch(error){
+            console.error("Error",error);
+            alert("Could not connect to api :(")
+        }
+
+}
+
+
+document.getElementById("commentForm").addEventListener("submit", handleCommentSubmit);
 getAdviceBtn.addEventListener('click',fetchAdvice)
