@@ -63,6 +63,7 @@ async function  handleCommentSubmit(e){
             alert("Success! Comment submitted :) ");
             console.log("Saved: ",savedComment);
             document.getElementById("commentForm").reset();
+            fetchComments();
 
         } else {
             alert("Error occurred during submission :(");
@@ -74,6 +75,40 @@ async function  handleCommentSubmit(e){
 
 }
 
+async function fetchComments(){
+
+    try{
+        const responce = await fetch("http://localhost:8080/api/comments");
+        if(!responce.ok){
+            throw new Error("failed to fetch comments");
+
+        }
+        const comments = await responce.json();
+        const commentSectionContainer = document.getElementById("commentSectionContainer");
+
+        commentSectionContainer.innerHTML = "";
+
+        comments.forEach(comment =>{
+
+            const commentDiv = document.createElement("div");
+            commentDiv.classList.add("comment");
+
+            commentDiv.innerHTML = `<p><strong>${comment.userSignature || "Anonymous"}</strong> (${comment.timeStamp || "Just now"})</p>
+                <p>${comment.text}</p>
+                <hr> `;
+
+            commentSectionContainer.appendChild(commentDiv);
+            }
+        )
+
+    } catch (error){
+        console.error("Error occurred while loading the comments",error)
+    }
+
+
+}
+
 
 document.getElementById("commentForm").addEventListener("submit", handleCommentSubmit);
-getAdviceBtn.addEventListener('click',fetchAdvice)
+getAdviceBtn.addEventListener('click',fetchAdvice);
+document.addEventListener("DOMContentLoaded", fetchComments);
