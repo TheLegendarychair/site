@@ -52,7 +52,7 @@ async function  handleCommentSubmit(e){
 
     };
     try{
-        const response = await fetch("http://localhost:8080/api/comments",{
+        const response = await fetch("http://api.kulikovskii.me/api/comments",{
             method:"POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(comment)
@@ -73,7 +73,38 @@ async function  handleCommentSubmit(e){
         }
 
 }
+async function fetchComments() {
+    try {
+        const response = await fetch("http://api.kulikovskii.me/api/comments");
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch comments");
+        }
+
+        const comments = await response.json();
+        const commentSectionContainer = document.getElementById("commentSectionContainer");
+        commentSectionContainer.innerHTML = "";
+
+        comments.forEach(comment => {
+            const commentDiv = document.createElement("div");
+            commentDiv.classList.add("comment");
+
+            commentDiv.innerHTML = `
+                <p><strong>${comment.userSignature || "Anonymous"}</strong> 
+                (${comment.timeStamp || "Just now"})</p>
+                <p>${comment.text}</p>
+                <hr>
+            `;
+
+            commentSectionContainer.appendChild(commentDiv);
+        });
+
+    } catch (error) {
+        console.error("Error occurred while loading the comments", error);
+    }
+}
 
 
 document.getElementById("commentForm").addEventListener("submit", handleCommentSubmit);
 getAdviceBtn.addEventListener('click',fetchAdvice)
+document.addEventListener("DOMContentLoaded", fetchComments);
