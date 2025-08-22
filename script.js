@@ -91,8 +91,7 @@ async function fetchComments() {
 
             commentDiv.innerHTML = `
                 <p><strong>${comment.userSignature || "Anonymous"}</strong> 
-                (${comment.timeStamp ? new Date(comment.timeStamp)
-                .toLocaleDateString("en UK",{
+                (${comment.timeStamp ? new Date(comment.timeStamp).toLocaleDateString("en-GB",{
                     year: "numeric",
                     month: "long",
                     day: "numeric"
