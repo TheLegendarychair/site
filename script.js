@@ -91,7 +91,7 @@ async function fetchComments() {
 
             commentDiv.innerHTML = `
                 <p><strong>${comment.userSignature || "Anonymous"}</strong> 
-                (${comment.timeStamp || "Just now"})</p>
+                (${comment.timeStamp || "__"})</p>
                 <p>${comment.text}</p>
                 <hr>
             `;
