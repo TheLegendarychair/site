@@ -19,19 +19,29 @@ const SHAPES = {
         [0,0,0]
     ],
     L:[
-        [1,0,0],
-        [1,0,0],
+        [0,1,0],
+        [0,1,0],
+        [0,1,1]
+    ],
+    J:[
+        [0,1,0],
+        [0,1,0],
         [1,1,0]
     ],
     I:[
-        [1,0,0],
-        [1,0,0],
-        [1,0,0]
+        [0,1,0],
+        [0,1,0],
+        [0,1,0]
     ],
     Z:[
+        [0,0,0],
         [1,1,0],
-        [0,1,0],
         [0,1,1]
+    ],
+    S:[
+        [0,0,0],
+        [0,1,1],
+        [1,1,0]
     ]
 }
 
@@ -54,9 +64,7 @@ function generateShape(){
     const shapeMatrix = SHAPES[randomKey];
     currentShapeMatrix = shapeMatrix.map(row => row.slice());
 
-    //let location = 3;
-    //let shapeXSize = 3;
-    //Math.floor(Math.random()*3);
+
     currentShapeArray =[];
 
     let location = Math.floor(COLS/2) - Math.floor(shapeMatrix[0].length /2);
@@ -89,7 +97,8 @@ function flip90(){
 
 
     let flippedShapeArray = [];
-    fillArrayFromMatrix(flippedMatrix,flippedShapeArray,currentShapeArray[0].col-1,currentShapeArray[0].row -1);
+
+    fillArrayFromMatrix(flippedMatrix,flippedShapeArray,currentShapeArray[0].col -1,currentShapeArray[0].row - 1);
 
     if(checkMove(flippedShapeArray,0,0)){
         currentShapeMatrix = flippedMatrix;
@@ -97,17 +106,7 @@ function flip90(){
     }
 
 }
-// function generateBlock(index){
-//     currentBlock = {row:0, col: index, color:"red"}
-//     board[0][index] = "red";
-//     return{...currentBlock};
-// }
 
-//function generateShapeLocation(){
-//    return Math.floor(Math.random()* COLS);}
-
-
-//unused for now(score system)
 let score = 0;
 const ScoreBoard = document.getElementById("score");
 
@@ -199,19 +198,12 @@ function moveShape(moveAllowed,x,y){
         return;
 
 
-        //board[row][col] = "green";
-        //currentShapeArray.splice(i,1);
-
     }
     for (let i = 0;i < currentShapeArray.length;i++){
         let {row,col, color } = currentShapeArray[i];
         currentShapeArray[i] = {row:row+y, col:col +x,color}
     }
 
-    // board[row][col] = 0;
-    // board[row+y][col+x] = color;
-    // currentBlock = {row:row +y,col:col +x,color};
-    // currentShapeArray[i] = currentBlock;
 
 
 }
