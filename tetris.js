@@ -5,6 +5,7 @@ const ROWS = 20;
 const COLS = 10;
 const BLOCK_SIZE = 20;
 
+
 let isLock = false;
 ctx.scale(BLOCK_SIZE,BLOCK_SIZE);
 
@@ -110,6 +111,7 @@ function flip90(){
 let score = 0;
 const ScoreBoard = document.getElementById("score");
 
+
 function drawBlock(x,y,color){
     ctx.fillStyle = color;
     ctx.fillRect(x,y,1,1);
@@ -157,6 +159,7 @@ function checkMove(shapeArray,x,y){
 
 //assume row is full until proven otherwise
 function clearFullRows() {
+    let rowsCleared = 0;
     for (let r = ROWS - 1; r >= 0; r--) {
         let isFull = true;
         for (let c = 0; c < COLS; c++) {
@@ -170,9 +173,21 @@ function clearFullRows() {
             // Add a new empty row to top
             board.unshift(new Array(COLS).fill(0));
 
-            r++; // re-check the same row index (since everything shifted down)
+            r++;
+            rowsCleared ++;
         }
+
     }
+    score += rowsCleared === 1 ? 40:
+        rowsCleared === 2 ? 100:
+            rowsCleared === 3? 300:
+                rowsCleared === 4? 1200 : 0;
+    updateScore();
+}
+
+function updateScore(){
+    ScoreBoard.textContent = score;
+
 }
 function moveShape(moveAllowed,x,y){
     if(!moveAllowed){
@@ -236,6 +251,11 @@ function handleKeyDown(event){
 
         }
 
+    }
+    if (event.key =="s" || event.key =="S"){
+        if(checkMove(currentShapeArray,0,1)){
+            moveShape(true,0,1);
+        }
     }
 
 

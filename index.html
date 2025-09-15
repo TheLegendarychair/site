@@ -11,12 +11,16 @@
     <!-- instead of the h1 use a div and add a  button link on the top right that will go to site github repo -->
 
     <h3>Tetris Update!</h3>
-    <p>Try out my JavaScript implementation of tetris! "A" = Move left, "D" = Move right, "W" = rotate shape, refresh the page to restart.
+    <p>Try out my JavaScript implementation of tetris! "A" = Move left, "D" = Move right, "W" = rotate shape ,"S" to move the shape down faster, refresh the page to restart.
     </p>
-    <div class="gameContainer"></div>
-    <canvas id="board" width="200" height="400"></canvas>
-    <div class="sidebar"></div>
-    <div id="score"></div>
+    <div class="gameContainer">
+        <canvas id="board" width="200" height="400"></canvas>
+        <div class="sidebar">
+            <p>Score:</p>
+            <div id="score">0</div>
+        </div>
+    </div>
+
     <script src="tetris.js"></script>
     <h3>Advice of the day generator!</h3>
     <div id="advice"></div>
