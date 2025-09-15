@@ -219,18 +219,15 @@ function update(){
 function handleKeyDown(event){
     if(currentShapeArray.length === 0)return;
 
-    if(event.key == "w" || event.key == "W"){
         flip90();
     }
 
     //checks if col to the left is not the lim
-    if (event.key =="a" || event.key =="A"){
         if (checkMove(currentShapeArray,-1,0)){
             moveShape(true,-1,0);
         }
 
     }   //checks if col to the right is not the limit
-    if (event.key =="d" || event.key =="D" ){
         if(checkMove(currentShapeArray,1,0)){
             moveShape(true,1,0);
 
