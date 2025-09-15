@@ -193,10 +193,10 @@ function moveShape(moveAllowed,x,y){
         currentShapeArray[i] = {row:row+y, col:col +x,color}
     }
 
-        // board[row][col] = 0;
-        // board[row+y][col+x] = color;
-        // currentBlock = {row:row +y,col:col +x,color};
-        // currentShapeArray[i] = currentBlock;
+    // board[row][col] = 0;
+    // board[row+y][col+x] = color;
+    // currentBlock = {row:row +y,col:col +x,color};
+    // currentShapeArray[i] = currentBlock;
 
 
 }
@@ -219,15 +219,18 @@ function update(){
 function handleKeyDown(event){
     if(currentShapeArray.length === 0)return;
 
+    if(event.key == "w" || event.key == "W"){
         flip90();
     }
 
-    //checks if col to the left is not the lim
+
+    if (event.key =="a" || event.key == "A"){
         if (checkMove(currentShapeArray,-1,0)){
             moveShape(true,-1,0);
         }
 
-    }   //checks if col to the right is not the limit
+    }
+    if (event.key =="d" || event.key == "D"){
         if(checkMove(currentShapeArray,1,0)){
             moveShape(true,1,0);
 
@@ -251,7 +254,3 @@ function gameLoop(){
 
 //sets the interval in at which update loop runs(how often blocks move one row down)
 setInterval(gameLoop, 350);
-
-
-
-
