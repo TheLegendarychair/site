@@ -30,36 +30,53 @@
     <!-- instead of the h1 use a div and add a  button link on the top right that will go to site github repo -->
 
     <div class="container-fluid text-center">
-        <h3>Tetris Update!</h3>
+        <h3>JS tetris!</h3>
         <div class="container-fluid text-center border">
-            <p>Try out my JavaScript implementation of tetris! "A" = Move left, "D" = Move right, "W" = rotate shape ,"S" to move the shape down faster, refresh the page to restart.
+            <p>Try out my JavaScript implementation of tetris! "A" = Move left, "D" = Move right, "W" = rotate shape ,"S" to move the shape down faster.
+                Alternatively, use the clickable buttons. refresh the page to restart.
             </p>
         </div>
+    </div>
+    <div class="row pb-5">
+        <div class="col-md-5 text-end"></div>
+        <div class="col-md-2 text-end" id ="scoreContainer">
+            
+        <div class="col-md-4 text-end"></div>
+        
+    </div>
+    
+    <div class="container-fluid text-center pb-4 pt-4">
+        <button id="score" class ="controlBtn"> Score: </button>
     </div>
 
     <div class="container-fluid">
 
-        <div class="row pt-3 pb-5">
-            
-            <div class="col-md-7 p-3 text-end">
+        <div class="row">
+            <div class="col-md-5 text-end">
+                <button id="leftBtn" class ="controlBtn"> ⇐ </button>
+            </div>
+                
+            <div class="col-md-2 text-center ">
                 <canvas id="board" width="200" height="400"></canvas>
             </div>
-            <div class="col-md-5 p-3 bg-light">
-                <div class="sidebar">
-                    <p>Score:</p>
-                    <div id="score">0</div>
-        </div>
+            <div class="col-md-5 bg-light">
+                <button id="rightBtn" class ="controlBtn"> ⇒  </button>
+                
             </div>
         </div>
         
     </div>
+    <div class="container-fluid text-center pb-5">
+        <button id="spinBtn" class ="controlBtn"> ↺ </button>
+    </div>
+    
 
     <script src="tetris.js"></script>
     <div class="container-fluid text-center pt-3 pb-3 border border-2 w-50 mx-auto">
         <h3>Advice of the day generator!</h3>
         <button id="getAdvice">Get Advice</button>
         
-        <div id="advice" class="container-fluid text-center pb-5 pt-5 "></div>
+        <div id="advice" class="container-fluid text-center pb-5 pt-5"></div>
         
     </div>
     

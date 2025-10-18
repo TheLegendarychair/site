@@ -21,6 +21,8 @@ form button {
     display: block;
     width: 88%;
     height: 60px;
+    border: 2px solid #555;
+    background-color: #e3e3e3;
     margin: 2% auto;
     text-align: center;
 }
@@ -32,5 +34,88 @@ form button {
     text-align: center;  
 }
 
+#leftBtn{
+    width: 44%;
+    height: 400px;
+}
+
+#rightBtn{
+    width: 44%;
+    margin-left: 2.5%;
+    height: 400px;
+}
+
+#spinBtn{
+    margin-top: 1.5%;
+    margin-left: 1%;
+    width: 55.6%;
+    height: 80px;
+}
+
+.controlBtn {
+  position: relative;
+  color: #555;
+  background-color: #e3e3e3;
+  border: none; 
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.controlBtn::before,
+.controlBtn::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #555;
+}
+
+.controlBtn::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.controlBtn::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+.controlBtn span::before,
+.controlBtn span::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #555;
+}
+
+.controlBtn span::before {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.controlBtn span::after {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+#scoreContainer{
+    background-color: #e3e3e3;
+}
+
 .container-fluid{padding-left: 40%}
 
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: #333; /* set text color */
+}

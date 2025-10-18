@@ -80,7 +80,7 @@ function  fillArrayFromMatrix(matrix,array,col,row){
     for( let r = 0; r < matrix.length;r++){
         for(let c = 0; c < matrix[r].length; c++){
             if(matrix[r][c] ==1){
-                let  block = {row:r +row,col:c + col,color:"red"};
+                let  block = {row:r +row,col:c + col,color:"#606060"};
                 array.push(block);
             }
         }
@@ -126,7 +126,7 @@ function drawBoard(){
     for(let r = 0; r<ROWS; r++){
         for (let c =0; c<COLS;c++){
             let cell = board[r][c];
-            drawBlock(c,r,cell ? cell: "black");
+            drawBlock(c,r,cell ? cell: "#e3e3e3");//whiteout color
         }
     }
     for(let block of currentShapeArray){
@@ -185,13 +185,13 @@ function clearFullRows() {
 }
 
 function updateScore(){
-    ScoreBoard.textContent = score;
+    ScoreBoard.textContent = "Score: "+ score.toString();
 
 }
 function moveShape(moveAllowed,x,y){
     if(!moveAllowed){
         for(let block of currentShapeArray){
-            board[block.row][block.col] = "green";
+            board[block.row][block.col] = "#282828";
         }
         currentShapeArray = [];
         clearFullRows();
@@ -251,7 +251,25 @@ function handleKeyDown(event){
     }
 
 
+
 }
+
+document.getElementById("leftBtn").addEventListener("click", () => {
+  if (checkMove(currentShapeArray, -1, 0)) {
+    moveShape(true, -1, 0);
+  }
+});
+
+document.getElementById("rightBtn").addEventListener("click", () => {
+  if (checkMove(currentShapeArray, 1, 0)) {
+    moveShape(true, 1, 0);
+  }
+});
+
+document.getElementById("spinBtn").addEventListener("click", () => {
+  flip90();
+});
+
 
 document.addEventListener("keydown",handleKeyDown);
 
@@ -266,3 +284,4 @@ function gameLoop(){
 
 //sets the interval in at which update loop runs(how often blocks move one row down)
 setInterval(gameLoop, 350);
+
