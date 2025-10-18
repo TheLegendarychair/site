@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: monospace;
+    background: #111;
+    color: #eee;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+canvas {
+    background: #222;
+    border: 2px solid #555;
+}

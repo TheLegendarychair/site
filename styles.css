@@ -1,76 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    text-align: center;
-
-
-}
-.gameContainer {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    margin: 20px auto;
-    width: fit-content;
-}
-
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-    border: 2px solid #333;
-    border-radius: 2px;
-    background-color: #fff;
-}
-
-p{
-    padding-bottom: 1%;
-    display: inline-block;
-}
-
-
-h1{
-    border: 2px solid #333333; /* width | style | color */
-    border-radius: 6px;
-    padding: 12px 24px;
-}
-
-h2{
-    margin-top: 40px ;
-    margin-bottom: 0;
-}
-
-#advice{
-    display: inline-block;
-    border: 2px solid #333333; /* width | style | color */
-    border-radius: 6px;
-    padding: 12px 24px;
-}
-button {
-    background-color: #d093ff; /* Green */
-    color: white;
-    padding: 12px 24px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #cc86ff;
-}
-
-button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-    background-color: #d093ff
-}
-button:disabled:hover,
-button:disabled:active {
-    background-color: #d093ff;
-}
-
-
 form input,
 form textarea,
 form button {
@@ -80,41 +7,30 @@ form button {
 
 .commentForm{
     width: 60%;
-    margin: 0 auto;
+    margin: 0;
     text-align: center;
 }
-#commentForm input,
-#commentForm button {
+#commentForm input {
     display: block;
     width: 25%;
-    margin: 2% auto;  /* 2% for the vertical */
+    margin: 2% auto;
+    text-align: center;
+
+}
+#commentForm button {
+    display: block;
+    width: 88%;
+    height: 60px;
+    margin: 2% auto;
     text-align: center;
 }
 #commentForm textarea {
     display: block;
-    width: 60%;
+    width: 88%;
     height: 100px;
-    margin: 2% auto;  /* 2% for the vertical */
-    text-align: center;
+    margin: 2% auto;
+    text-align: center;  
 }
 
-.commentDiv{
-    text-align: center;
-    margin: auto;
-    width: 60%;
-    padding: 0 20px 20px;
-}
+.container-fluid{padding-left: 40%}
 
-
-
-#adviceDisplay {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #333;
-
-
-}
-
-button:active{
-    background-color: #c667ff;
-}
