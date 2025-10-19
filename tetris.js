@@ -71,10 +71,11 @@ async function  submitScore(){
         });
         if(response.ok){
             const savedScore = await response.json();
-
+            alert("Success! Comment submitted :) ");
             console.log("Saved: ",savedScore);
 
         } else {
+            alert("Error occurred during submission :(");
             
         }}
         catch(error){

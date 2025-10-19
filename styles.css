@@ -120,13 +120,7 @@ form button {
 .navbar .nav-link {
   color: #333; 
 }
-#playerName{
-  display: none;
-}
 
-#submitScoreBtn{
-  display: none;
-}
 
 .overlay{position: absolute;
         top: 0;
