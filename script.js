@@ -73,6 +73,8 @@ async function  handleCommentSubmit(e){
         }
 
 }
+
+
 async function fetchComments() {
     try {
         const response = await fetch("https://api.kulikovskii.me/api/comments");

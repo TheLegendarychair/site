@@ -7,7 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3e3e3;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Kulikovskii site</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,16 +22,15 @@
         </div>
     </nav>
 
-
-    <div class="container-fluid text-center pb-5 pt-3">
-        <h1>Welcome to the Kulikovskii site!</h1>
+    
+    <div class="container-fluid text-center pb-4 pt-4">
+        <h3>Welcome! Try out JS tetris?</h3>
     </div>
 
-    <!-- instead of the h1 use a div and add a  button link on the top right that will go to site github repo -->
 
     <div class="container-fluid text-center">
-        <h3>JS tetris!</h3>
-        <div class="container-fluid text-center border">
+        
+        <div class="container-fluid text-center border" id="collapsibleText">
             <p>Try out my JavaScript implementation of tetris! "A" = Move left, "D" = Move right, "W" = rotate shape ,"S" to move the shape down faster.
                 Alternatively, use the clickable buttons. refresh the page to restart.
             </p>
@@ -46,7 +45,7 @@
     </div>
     
     <div class="container-fluid text-center pb-4 pt-4">
-        <button id="score" class ="controlBtn"> Score: </button>
+        <button id="score" class ="controlBtn">Press to Start</button>
     </div>
 
     <div class="container-fluid">
@@ -56,10 +55,11 @@
                 <button id="leftBtn" class ="controlBtn"> ⇐ </button>
             </div>
                 
-            <div class="col-md-2 text-center ">
+            <div class="col-md-2 text-center " style="position: relative;">
                 <canvas id="board" width="200" height="400"></canvas>
+                <div class="overlay">Game Over</div>
             </div>
-            <div class="col-md-5 bg-light">
+            <div class="col-md-5">
                 <button id="rightBtn" class ="controlBtn"> ⇒  </button>
                 
             </div>

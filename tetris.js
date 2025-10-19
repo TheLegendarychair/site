@@ -5,11 +5,14 @@ const ROWS = 20;
 const COLS = 10;
 const BLOCK_SIZE = 20;
 
+let gameOver = false;
+
+let gameInterval = null;
 
 let isLock = false;
 ctx.scale(BLOCK_SIZE,BLOCK_SIZE);
 
-
+overlay = document.querySelector('.overlay');
 let currentShapeArray = [];
 
 const SHAPES = {
@@ -48,12 +51,16 @@ const SHAPES = {
 
 //create the board 2d array
 let board = [];
-for (let r = 0; r <ROWS;r++){
+function createEmptyBoard(){
+    for (let r = 0; r <ROWS;r++){
     board[r] = [];
     for(let c = 0; c < COLS; c++){
         board[r][c] = 0;
     }
 }
+
+}
+createEmptyBoard();
 
 let currentShapeMatrix;
 
@@ -109,6 +116,8 @@ function flip90(){
 
 let score = 0;
 const ScoreBoard = document.getElementById("score");
+
+
 
 
 function drawBlock(x,y,color){
@@ -186,6 +195,14 @@ function clearFullRows() {
 
 function updateScore(){
     ScoreBoard.textContent = "Score: "+ score.toString();
+    if(gameOver){
+        ScoreBoard.textContent = "Press to Restart";
+        overlay.textContent = "Game Over Score:" + score.toString();
+        overlay.style.display = "flex";
+        clearInterval(gameInterval);
+        
+        gameInterval = null;
+    }
 
 }
 function moveShape(moveAllowed,x,y){
@@ -219,7 +236,15 @@ function update(){
         }
     }
     else{
-        generateShape()
+        if(!gameOver){
+            generateShape()}
+
+        if(!checkMove(currentShapeArray,0,1)){
+            gameOver = true;
+            
+            
+        }
+        
     }
 }
 
@@ -249,6 +274,9 @@ function handleKeyDown(event){
             moveShape(true,0,1);
         }
     }
+    if(event.key =="r" || event.key =="R"){
+        startGame();
+    }
 
 
 
@@ -271,17 +299,38 @@ document.getElementById("spinBtn").addEventListener("click", () => {
 });
 
 
+
+
 document.addEventListener("keydown",handleKeyDown);
 
 
+function startGame(){
+    if(gameInterval == null){
+        gameOver = false;
+        score = 0;
+        createEmptyBoard();
+        currentShapeArray = [];
+        updateScore();
+        generateShape();
+        overlay.style.display = "none";
+        gameInterval = setInterval(gameLoop,350);
+    }
+}
 
 function gameLoop(){
     update();
+    if(gameOver){
+        drawBoard();
+        
+        return;
+    }
     drawBoard();
 }
 
 
 
 //sets the interval in at which update loop runs(how often blocks move one row down)
-setInterval(gameLoop, 350);
+document.getElementById("score").addEventListener("click",()=>{
+    startGame();
+})
 
