@@ -110,7 +110,67 @@ async function fetchComments() {
     }
 }
 
+async function fetchScores() {
+    try {
+        const response = await fetch("https://api.kulikovskii.me/api/scores");
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch scores");
+        }
+
+        const scores = await response.json();
+        const scoreSectionContainer = document.getElementById("scoreSectionContainer");
+        scoreSectionContainer.innerHTML = "";
+
+        const topScores = scores
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 10);
+
+        topScores.forEach(score => {
+            const scoreDiv = document.createElement("div");
+            scoreDiv.classList.add("score-entry");
+
+            scoreDiv.innerHTML = `
+                <p><strong>${score.userSignature || "Anonymous"}</strong>: ${score.score ?? 0}</p>
+            `;
+
+            scoreSectionContainer.appendChild(scoreDiv);
+        });
+
+    } catch (error) {
+        console.error("Error occurred while loading the scores", error);
+    }
+}
+
+async function fetchLeaderboard() {
+    try {
+        const response = await fetch("https://api.kulikovskii.me/api/scores/top10");
+        if (!response.ok) throw new Error("Failed to fetch leaderboard ");
+
+        const scores = await response.json();
+
+        const leaderboardContainer = document.getElementById("leaderboardContainer");
+        leaderboardContainer.innerHTML = "";
+
+        scores.forEach((score, index) => {
+            const div = document.createElement("div");
+            div.classList.add("leaderboard-entry");
+            div.innerHTML = `
+                <p><strong>${index + 1}. ${score.userSignature}</strong> — ${score.score}</p>
+            `;
+            leaderboardContainer.appendChild(div);
+        });
+
+    } catch (error) {
+        console.error("Error loading leaderboard:", error);
+    }
+}
+
+function submitScore(){
+    
+}
 
 document.getElementById("commentForm").addEventListener("submit", handleCommentSubmit);
 getAdviceBtn.addEventListener('click',fetchAdvice)
 document.addEventListener("DOMContentLoaded", fetchComments);
+document.addEventListener("DOMContentLoaded",fetchLeaderboard);

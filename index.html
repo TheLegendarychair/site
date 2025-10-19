@@ -38,14 +38,19 @@
     </div>
     <div class="row pb-5">
         <div class="col-md-5 text-end"></div>
-        <div class="col-md-2 text-end" id ="scoreContainer">
+        
+        <div class="col-md-2 text-end pt-4">
+            <input type="text" id="playerName"placeholder="name for the score" required/>
             
         <div class="col-md-4 text-end"></div>
         
     </div>
     
     <div class="container-fluid text-center pb-4 pt-4">
+        
         <button id="score" class ="controlBtn">Press to Start</button>
+        
+        
     </div>
 
     <div class="container-fluid">
@@ -62,6 +67,7 @@
             <div class="col-md-5">
                 <button id="rightBtn" class ="controlBtn"> ⇒  </button>
                 
+                
             </div>
         </div>
         
@@ -69,12 +75,15 @@
     <div class="container-fluid text-center pb-5">
         <button id="spinBtn" class ="controlBtn"> ↺ </button>
     </div>
+
+    <h2 style="text-align: center;">scoreboard</h2>
+    <div id="leaderboardContainer" class="container-fluid text-center border border-2 mx-auto"> </div>
     
 
     <script src="tetris.js"></script>
     <div class="container-fluid text-center pt-3 pb-3 border border-2 w-50 mx-auto">
         <h3>Advice of the day generator!</h3>
-        <button id="getAdvice">Get Advice</button>
+        <button id="getAdvice" class ="controlBtn">Get Advice</button>
         
         <div id="advice" class="container-fluid text-center pb-5 pt-5"></div>
         

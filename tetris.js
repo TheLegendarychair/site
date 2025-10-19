@@ -9,10 +9,13 @@ let gameOver = false;
 
 let gameInterval = null;
 
+let played = false;
+
 let isLock = false;
 ctx.scale(BLOCK_SIZE,BLOCK_SIZE);
 
 overlay = document.querySelector('.overlay');
+nameBox = document.getElementById("playerName");
 let currentShapeArray = [];
 
 const SHAPES = {
@@ -48,6 +51,39 @@ const SHAPES = {
     ]
 }
 
+
+async function  submitScore(){
+
+
+    const playerName = nameBox.value.trim();
+
+    const playerScore = {
+        userSignature: playerName || "Anonymous",
+        score: score
+
+    };
+    try{
+        const response = await fetch("https://api.kulikovskii.me/api/scores",{
+            method:"POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(playerScore)
+        });
+        if(response.ok){
+            const savedComment = await response.json();
+
+            
+            console.log("Saved: ",savedComment);
+            document.getElementById("commentForm").reset();
+
+        } else {
+            
+        }}
+        catch(error){
+            console.error("Error",error);
+            
+        }
+
+}
 
 //create the board 2d array
 let board = [];
@@ -198,7 +234,9 @@ function updateScore(){
     if(gameOver){
         ScoreBoard.textContent = "Press to Restart";
         overlay.textContent = "Game Over Score:" + score.toString();
+        played = true;
         overlay.style.display = "flex";
+        nameBox.style.display = "flex";
         clearInterval(gameInterval);
         
         gameInterval = null;
@@ -306,6 +344,9 @@ document.addEventListener("keydown",handleKeyDown);
 
 function startGame(){
     if(gameInterval == null){
+        if(played){
+            submitScore();
+        }
         gameOver = false;
         score = 0;
         createEmptyBoard();
@@ -313,6 +354,9 @@ function startGame(){
         updateScore();
         generateShape();
         overlay.style.display = "none";
+        nameBox.style.display = "none";
+        
+        
         gameInterval = setInterval(gameLoop,350);
     }
 }
@@ -333,4 +377,6 @@ function gameLoop(){
 document.getElementById("score").addEventListener("click",()=>{
     startGame();
 })
+
+
 
