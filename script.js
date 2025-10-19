@@ -110,41 +110,11 @@ async function fetchComments() {
     }
 }
 
-async function fetchScores() {
-    try {
-        const response = await fetch("https://api.kulikovskii.me/api/scores");
 
-        if (!response.ok) {
-            throw new Error("Failed to fetch scores");
-        }
-
-        const scores = await response.json();
-        const scoreSectionContainer = document.getElementById("scoreSectionContainer");
-        scoreSectionContainer.innerHTML = "";
-
-        const topScores = scores
-            .sort((a, b) => b.score - a.score)
-            .slice(0, 10);
-
-        topScores.forEach(score => {
-            const scoreDiv = document.createElement("div");
-            scoreDiv.classList.add("score-entry");
-
-            scoreDiv.innerHTML = `
-                <p><strong>${score.userSignature || "Anonymous"}</strong>: ${score.score ?? 0}</p>
-            `;
-
-            scoreSectionContainer.appendChild(scoreDiv);
-        });
-
-    } catch (error) {
-        console.error("Error occurred while loading the scores", error);
-    }
-}
 
 async function fetchLeaderboard() {
     try {
-        const response = await fetch("https://api.kulikovskii.me/api/scores/top10");
+        const response = await fetch("https://api.kulikovskii.me/api/scores/top");
         if (!response.ok) throw new Error("Failed to fetch leaderboard ");
 
         const scores = await response.json();
@@ -167,7 +137,7 @@ async function fetchLeaderboard() {
 }
 
 function submitScore(){
-    
+
 }
 
 document.getElementById("commentForm").addEventListener("submit", handleCommentSubmit);
