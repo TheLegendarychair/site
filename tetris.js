@@ -69,11 +69,9 @@ async function  submitScore(){
             body: JSON.stringify(playerScore)
         });
         if(response.ok){
-            const savedComment = await response.json();
+            const savedScore = await response.json();
 
-            
             console.log("Saved: ",savedComment);
-            document.getElementById("commentForm").reset();
 
         } else {
             
