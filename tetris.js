@@ -16,6 +16,7 @@ ctx.scale(BLOCK_SIZE,BLOCK_SIZE);
 
 overlay = document.querySelector('.overlay');
 nameBox = document.getElementById("playerName");
+submitScoreBtn = document.getElementById("submitScoreBtn");
 let currentShapeArray = [];
 
 const SHAPES = {
@@ -71,7 +72,7 @@ async function  submitScore(){
         if(response.ok){
             const savedScore = await response.json();
 
-            console.log("Saved: ",savedComment);
+            console.log("Saved: ",savedScore);
 
         } else {
             
@@ -235,6 +236,7 @@ function updateScore(){
         played = true;
         overlay.style.display = "flex";
         nameBox.style.display = "flex";
+        submitScoreBtn.style.display = "flex";
         clearInterval(gameInterval);
         
         gameInterval = null;
@@ -343,7 +345,7 @@ document.addEventListener("keydown",handleKeyDown);
 function startGame(){
     if(gameInterval == null){
         if(played){
-            submitScore();
+            
         }
         gameOver = false;
         score = 0;
@@ -353,6 +355,8 @@ function startGame(){
         generateShape();
         overlay.style.display = "none";
         nameBox.style.display = "none";
+        submitScoreBtn.style.display = "none";  
+        
         
         
         gameInterval = setInterval(gameLoop,350);
@@ -369,7 +373,9 @@ function gameLoop(){
     drawBoard();
 }
 
-
+document.getElementById("submitScoreBtn").addEventListener("click",()=>{
+    submitScore();
+})
 
 //sets the interval in at which update loop runs(how often blocks move one row down)
 document.getElementById("score").addEventListener("click",()=>{
