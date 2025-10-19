@@ -121,6 +121,9 @@ form button {
   color: #333; 
 }
 
+#playerName{
+  display: none;
+}
 
 .overlay{position: absolute;
         top: 0;
