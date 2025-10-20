@@ -235,7 +235,7 @@ function clearFullRows() {
 function updateScore(){
     ScoreBoard.textContent = "Score: "+ score.toString();
     if(gameOver){
-        ScoreBoard.textContent = "Press to Restart";
+        ScoreBoard.textContent = "Restart & Submit Score";
         overlay.textContent = "Game Over Score:" + score.toString();
         played = true;
         overlay.style.display = "flex";
@@ -316,9 +316,7 @@ function handleKeyDown(event){
             moveShape(true,0,1);
         }
     }
-    if(event.key =="r" || event.key =="R"){
-        startGame();
-    }
+    
 
 
 
@@ -346,10 +344,11 @@ document.getElementById("spinBtn").addEventListener("click", () => {
 document.addEventListener("keydown",handleKeyDown);
 
 
-function startGame(){
+async function startGame(){
     if(gameInterval == null){
         if(played){
-            submitScore();
+            await submitScore();
+            await fetchLeaderboard();
         }
         gameOver = false;
         score = 0;
@@ -384,6 +383,7 @@ function gameLoop(){
 //sets the interval in at which update loop runs(how often blocks move one row down)
 document.getElementById("score").addEventListener("click",()=>{
     startGame();
+    
 })
 
 
