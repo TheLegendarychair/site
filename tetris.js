@@ -375,7 +375,9 @@ function gameLoop(){
         return;
     }
     drawBoard();
-}
+} 
+
+
 
 
 

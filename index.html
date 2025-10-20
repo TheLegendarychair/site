@@ -32,7 +32,7 @@
         
         <div class="container-fluid text-center border" id="collapsibleText">
             <p>Try out my JavaScript implementation of tetris! "A" = Move left, "D" = Move right, "W" = rotate shape ,"S" to move the shape down faster.
-                Alternatively, use the clickable buttons. refresh the page to restart.
+                Alternatively, use the clickable buttons. restart the game to submit your score.
             </p>
         </div>
     </div>
@@ -60,15 +60,16 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-5 text-end">
+            <div class="col-md-4 text-end">
                 <button id="leftBtn" class ="controlBtn"> ⇐ </button>
             </div>
                 
-            <div class="col-md-2 text-center " style="position: relative;">
+            <div class="col-md-4 text-center " style="position: relative;">
                 <canvas id="board" width="200" height="400"></canvas>
                 <div class="overlay">Game Over</div>
             </div>
-            <div class="col-md-5">
+            
+            <div class="col-md-4">
                 <button id="rightBtn" class ="controlBtn"> ⇒  </button>
                 
                 
@@ -82,10 +83,13 @@
 
     <h2 style="text-align: center;">Leaderboard</h2>
     <div id="leaderboardContainer" class="container-fluid text-center border border-2 mx-auto pt-4 pb-4"> </div>
+
+
+    <div class="container-fluid pt-5 pb-5"></div>
     
 
    
-    <div class="container-fluid text-center pt-3 pb-3 border border-2 w-50 mx-auto">
+    <div class="container-fluid text-center pt-3 pb-5 border border-2 w-50 mx-auto">
         <h3>Advice of the day generator!</h3>
         <button id="getAdvice" class ="controlBtn">Get Advice</button>
         

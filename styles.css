@@ -36,20 +36,23 @@ form button {
 
 #leftBtn{
     width: 44%;
-    margin-right: 2.5%;
+    
     height: 400px;
 }
 
+
+
 #rightBtn{
     width: 44%;
-    margin-left: 5%;
+    
+    
     height: 400px;
 }
 
 #spinBtn{
     margin-top: 1.5%;
-    margin-left: 1%;
-    width: 57.6%;
+    
+    width: 64%;
     height: 80px;
 }
 
