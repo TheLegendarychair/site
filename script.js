@@ -42,17 +42,17 @@ async function  handleCommentSubmit(e){
 
     e.preventDefault();
 
-    const userSignature = document.getElementById("userSignature").value;
-    const text = document.getElementById("text").value
+    const Username = document.getElementById("Username").value;
+    const text = document.getElementById("text").value;
 
 
     const comment = {
-        userSignature: userSignature,
+        Username: Username,
         text: text
 
     };
     try{
-        const response = await fetch("https://api.kulikovskii.me/api/comments",{
+        const response = await fetch("http://localhost:5169/comments",{
             method:"POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(comment)
@@ -69,15 +69,16 @@ async function  handleCommentSubmit(e){
         }}
         catch(error){
             console.error("Error",error);
-            alert("Could not connect to api :(")
+            alert("Could not connect to api :(");
         }
 
 }
-
+//
+//https://api.kulikovskii.me/api/comments
 
 async function fetchComments() {
     try {
-        const response = await fetch("https://api.kulikovskii.me/api/comments");
+        const response = await fetch("http://localhost:5169/comments");
 
         if (!response.ok) {
             throw new Error("Failed to fetch comments");
@@ -92,7 +93,7 @@ async function fetchComments() {
             commentDiv.classList.add("comment");
 
             commentDiv.innerHTML = `
-                <p><strong>${comment.userSignature || "Anonymous"}</strong> 
+                <p><strong>${comment.Username || "Anonymous"}</strong> 
                 (${comment.timeStamp ? new Date(comment.timeStamp).toLocaleDateString("en-GB",{
                     year: "numeric",
                     month: "long",
@@ -126,7 +127,7 @@ async function fetchLeaderboard() {
             const div = document.createElement("div");
             div.classList.add("leaderboard-entry");
             div.innerHTML = `
-                <p><strong>${index + 1}. ${score.userSignature}</strong> — ${score.score}</p>
+                <p><strong>${index + 1}. ${score.Username}</strong> — ${score.score}</p>
             `;
             leaderboardContainer.appendChild(div);
         });
