@@ -137,9 +137,7 @@ async function fetchLeaderboard() {
     }
 }
 
-function submitScore(){
 
-}
 
 document.addEventListener('touchstart', function preventZoom(e) {
   if (e.touches.length > 1) {
