@@ -52,7 +52,7 @@ async function  handleCommentSubmit(e){
 
     };
     try{
-        const response = await fetch("kuli/comments",{
+        const response = await fetch("https://api.kulikovskii.me/api/comments",{
             method:"POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(comment)
