@@ -4,8 +4,8 @@ const FOREGROUND = "#606060";
 const BACKGROUND = "#e3e3e3";
 
 const viewport = document.getElementById("viewport");
-viewport.width = 400
-viewport.height = 400
+viewport.width = 400;
+viewport.height = 400;
 const ctx1 = viewport.getContext("2d");
 
 

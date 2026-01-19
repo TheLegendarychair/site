@@ -52,7 +52,7 @@ async function  handleCommentSubmit(e){
 
     };
     try{
-        const response = await fetch("http://localhost:5169/comments",{
+        const response = await fetch("kuli/comments",{
             method:"POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(comment)
@@ -74,11 +74,11 @@ async function  handleCommentSubmit(e){
 
 }
 //
-//https://api.kulikovskii.me/api/comments
+//http://localhost:5169/comments
 
 async function fetchComments() {
     try {
-        const response = await fetch("http://localhost:5169/comments");
+        const response = await fetch("https://api.kulikovskii.me/api/comments");
 
         if (!response.ok) {
             throw new Error("Failed to fetch comments");

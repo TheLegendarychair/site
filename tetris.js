@@ -1,9 +1,12 @@
-const canvas = document.getElementById("board");
-const ctx = canvas.getContext("2d");
+const canvasT = document.getElementById("board");
+const ctxT = canvasT.getContext("2d");
 
-const ROWS = 20;
-const COLS = 10;
+const ROWS_ = 20;
+const COLS_ = 10;
 const BLOCK_SIZE = 20;
+
+// ctxT.width=200
+// ctxT.height=800
 
 let gameOver = false;
 
@@ -12,7 +15,7 @@ let gameInterval = null;
 let played = false;
 
 let isLock = false;
-ctx.scale(BLOCK_SIZE,BLOCK_SIZE);
+ctxT.scale(BLOCK_SIZE,BLOCK_SIZE);
 
 overlay = document.querySelector('.overlay');
 nameBox = document.getElementById("playerName");
@@ -91,9 +94,9 @@ async function  submitScore(){
 //create the board 2d array
 let board = [];
 function createEmptyBoard(){
-    for (let r = 0; r <ROWS;r++){
+    for (let r = 0; r <ROWS_;r++){
     board[r] = [];
-    for(let c = 0; c < COLS; c++){
+    for(let c = 0; c < COLS_; c++){
         board[r][c] = 0;
     }
 }
@@ -113,7 +116,7 @@ function generateShape(){
 
     currentShapeArray =[];
 
-    let location = Math.floor(COLS/2) - Math.floor(shapeMatrix[0].length /2);
+    let location = Math.floor(COLS_/2) - Math.floor(shapeMatrix[0].length /2);
 
 
     fillArrayFromMatrix(shapeMatrix,currentShapeArray,location,0);
@@ -160,19 +163,19 @@ const ScoreBoard = document.getElementById("score");
 
 
 function drawBlock(x,y,color){
-    ctx.fillStyle = color;
-    ctx.fillRect(x,y,1,1);
+    ctxT.fillStyle = color;
+    ctxT.fillRect(x,y,1,1);
 
-    ctx.strokeStyle = "#555"; // lighter grey
-    ctx.lineWidth = 0.05;     // make the lines thinner
-    ctx.strokeRect(x, y, 1, 1);
+    ctxT.strokeStyle = "#555"; // lighter grey
+    ctxT.lineWidth = 0.05;     // make the lines thinner
+    ctxT.strokeRect(x, y, 1, 1);
 
 }
 
 //renders the board
 function drawBoard(){
-    for(let r = 0; r<ROWS; r++){
-        for (let c =0; c<COLS;c++){
+    for(let r = 0; r<ROWS_; r++){
+        for (let c =0; c<COLS_;c++){
             let cell = board[r][c];
             drawBlock(c,r,cell ? cell: "#e3e3e3");//whiteout color
         }
@@ -188,10 +191,10 @@ function checkMove(shapeArray,x,y){
         let newRow = block.row + y;
         let newCol = block.col +x;
 
-        if(newCol < 0 || newCol >= COLS){
+        if(newCol < 0 || newCol >= COLS_){
             return false;
         }
-        if(newRow >= ROWS){
+        if(newRow >= ROWS_){
             return false;
         }
         if(newRow >= 0 && board[newRow][newCol] !==0){
@@ -207,9 +210,9 @@ function checkMove(shapeArray,x,y){
 //assume row is full until proven otherwise
 function clearFullRows() {
     let rowsCleared = 0;
-    for (let r = ROWS - 1; r >= 0; r--) {
+    for (let r = ROWS_ - 1; r >= 0; r--) {
         let isFull = true;
-        for (let c = 0; c < COLS; c++) {
+        for (let c = 0; c < COLS_; c++) {
             if (board[r][c] === 0) {
                 isFull = false;
                 break;
@@ -218,7 +221,7 @@ function clearFullRows() {
         if (isFull) {
             board.splice(r, 1);
             // Add a new empty row to top
-            board.unshift(new Array(COLS).fill(0));
+            board.unshift(new Array(COLS_).fill(0));
 
             r++;
             rowsCleared ++;
