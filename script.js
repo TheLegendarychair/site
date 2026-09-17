@@ -93,7 +93,7 @@ async function fetchComments() {
             commentDiv.classList.add("comment");
 
             commentDiv.innerHTML = `
-                <p><strong>${comment.Username || "Anonymous"}</strong> 
+                <p><strong>${comment.userSignature || "Anonymous"}</strong> 
                 (${comment.timeStamp ? new Date(comment.timeStamp).toLocaleDateString("en-GB",{
                     year: "numeric",
                     month: "long",
@@ -127,7 +127,7 @@ async function fetchLeaderboard() {
             const div = document.createElement("div");
             div.classList.add("leaderboard-entry");
             div.innerHTML = `
-                <p><strong>${index + 1}. ${score.Username}</strong> — ${score.score}</p>
+                <p><strong>${index + 1}. ${score.userSignature}</strong> — ${score.score}</p>
             `;
             leaderboardContainer.appendChild(div);
         });
