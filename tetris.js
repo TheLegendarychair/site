@@ -70,7 +70,7 @@ async function  submitScore(){
     };
     
     try{
-        const response = await fetch("https://api.kulikovskii.me/api/scores",{
+        const response = await fetch("https://comment-api-w68s.onrender.com/api/scores",{
             method:"POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(playerScore)
