@@ -52,7 +52,7 @@ async function  handleCommentSubmit(e){
 
     };
     try{
-        const response = await fetch("https://api.kulikovskii.me/api/comments",{
+        const response = await fetch("https://comment-api-w68s.onrender.com/api/comments",{
             method:"POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(comment)
@@ -78,7 +78,7 @@ async function  handleCommentSubmit(e){
 
 async function fetchComments() {
     try {
-        const response = await fetch("https://api.kulikovskii.me/api/comments");
+        const response = await fetch("https://comment-api-w68s.onrender.com/api/comments");
 
         if (!response.ok) {
             throw new Error("Failed to fetch comments");
@@ -115,7 +115,7 @@ async function fetchComments() {
 
 async function fetchLeaderboard() {
     try {
-        const response = await fetch("https://api.kulikovskii.me/api/scores/top");
+        const response = await fetch("https://comment-api-w68s.onrender.com/api/scores/top");
         if (!response.ok) throw new Error("Failed to fetch leaderboard ");
 
         const scores = await response.json();
