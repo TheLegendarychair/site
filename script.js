@@ -47,7 +47,7 @@ async function  handleCommentSubmit(e){
 
 
     const comment = {
-        Username: Username,
+        userSignature: Username,
         text: text
 
     };
